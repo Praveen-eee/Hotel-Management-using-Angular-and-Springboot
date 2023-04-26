@@ -1,0 +1,124 @@
+<br>
+<h4 class="text-center font-italic">USER - DASHBOARD</h4>
+<br>
+
+<p class="text-success">Welcome to BIT Hotels:- {{username}}</p>
+
+<mat-tab-group mat-align-tabs = "center">
+
+  <!-- <mat-tab label="Search rooms"></mat-tab> -->
+
+  <mat-tab label="Rooms">
+    <br>
+    <div class="bookroom">
+      <table class = "table table-striped table-bordered table-hover table-fixed w-75">
+        <thead class="thead-light">
+            <tr class="bg-secondary bg-opacity-25" >
+                <th scope="col"class="w-25"> Type</th>
+                <th scope="col" > AC / Non AC </th>
+                <th scope="col"> Capacity of guest</th>
+                <th scope="col"> Price</th>
+                <th scope="col"> Availability</th>
+                <th scope="col">Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let room of rooms"  >
+                 <td> {{ room.roomType }} </td>
+                 <td> {{ room.category }} </td>
+                <td> {{ room.noOfGuests }} </td>
+                <td> {{ room.price }} </td>
+                <td *ngIf="room.availability === 1 "> YES </td>
+                <td *ngIf="room.availability === 0 "> NO </td>
+                <td>
+                    <button (click)="bookroom(room.roomNumber)" class = "btn btn-warning"*ngIf="room.availability === 1"> Book Room </button>
+
+                    <h6 class = "text-danger font-Times New Roman"   *ngIf="room.availability === 0">Room Booked..!</h6>
+                    <!-- <button  (click)="deleteroom(room.roomNumber)"class = "btn btn-danger" style="margin-left: 10px"> Delete</button> -->
+                    <!-- <button  class = "btn btn-info" style="margin-left: 10px"> View</button> -->
+                </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Your Bookings">
+    <br>
+    <h4 class="text-center font-Italic">Bookings Details</h4>
+    <br>
+
+    <div class="detail">
+      <h6 class="text-success font-monospace">Name : {{customer.name}}</h6>
+      <h6 class="text-success font-monospace">User Name : {{customer.userName}}</h6>
+      <h6 class="text-success font-monospace">Email : {{customer.emailId}}</h6>
+    </div>
+    <br>
+   
+    <div class="bookroom">
+      <table class = "table table-striped table-bordered table-hover table-fixed w-75">
+        <thead class="thead-light">
+            <tr class="bg-secondary bg-opacity-25" >
+                <th scope="col"class="w-25"> Booking ID</th>
+                <!-- <th scope="col" > Email id</th> -->
+                <th scope="col"> Room Number</th>
+                <th scope="col"> Room Type</th>
+                <th scope="col"> No of Guest</th>
+                <th scope="col"> Checkin</th>
+                <th scope="col"> Checkout</th>
+                <th scope="col"> Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let booking of bookings"  >
+                <td> {{ booking.id }} </td>
+                <td> {{ booking.roomNumber }} </td>
+                <td> {{ booking.roomtype}} </td>
+                <td> {{ booking.noOfGuests }} </td>
+                <td> {{ booking.checkin }} </td>
+                <td> {{ booking.checkout }} </td>
+                <td class="text-success"> Booking confirmed...! </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Write a Review">
+    <br>
+
+    <div class="col-10">          
+      <div class="comment-box ml-2">
+          <h4>Add a comment</h4>
+          <div class="rating"> 
+              <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+              <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
+              <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+              <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+              <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+          </div>
+          
+          <div class="comment-area">
+              <textarea class="form-control" placeholder="what is your view?" rows="4"></textarea>
+          </div>
+          
+          <div class="comment-btns mt-2">
+              <div class="row">                 
+                  <div class="col-6">                     
+                      <div class="pull-left">                      
+                      <button class="btn btn-success btn-sm">Cancel</button>                              
+                      </div>
+                  </div>
+                  <div class="col-6">
+                      <div class="pull-right">
+                      <button class="btn btn-success send btn-sm" (click)="alertmsg()">Send <i class="fa fa-long-arrow-right ml-1"></i></button>      
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </mat-tab>
+
+</mat-tab-group>

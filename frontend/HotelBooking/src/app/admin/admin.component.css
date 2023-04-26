@@ -1,0 +1,61 @@
+.slider .carousel-inner {
+  height: 400px
+}
+
+.slider .carousel-inner .carousel-item {
+  height: 100%
+}
+
+.slider .carousel-inner .carousel-item h5, .slider .carousel-inner .carousel-item p {
+  color: black;
+}
+
+.slider .carousel-inner .carousel-item h5 {
+  color: #ffcc00;
+  font-size: 25px
+}
+
+.slider .carousel-inner .carousel-item img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 30px
+}
+
+.carousel-caption {
+  box-shadow: 5px 5px 10px #e0dddd, -5px -5px 10px #e0dddd;
+}
+
+.carousel-indicators {
+  bottom: -40px;
+}
+
+
+.table{
+	text-align: center;
+  margin-left: 25px;
+  margin-right: 50px;
+	}
+
+  .RoomList{
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+  .CustomerList
+  {
+    margin-left: 250px;
+	  margin-right: 250px;
+  }
+
+  button
+  {
+    cursor: pointer;
+  }
+
+
+  .BookingList
+  {
+    margin-left: 100px;
+	  margin-right: 100px;
+  }

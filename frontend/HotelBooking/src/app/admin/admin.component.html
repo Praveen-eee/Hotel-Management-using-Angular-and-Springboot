@@ -1,0 +1,250 @@
+
+<br>
+<h4 class="text-center font-italic">ADMIN - DASHBOARD</h4>
+<br>
+
+<mat-tab-group mat-align-tabs = "center">
+
+  <mat-tab label="Room List">
+  <div class="RoomList">
+    <br>
+    <table class = "table table-striped table-bordered table-hover">
+      <thead>
+          <tr class="bg-success bg-opacity-50" >
+              <th> Room Number</th>
+              <th> Category </th>
+              <th> Type</th>
+              <th> Available From</th>
+              <th> Available To</th>
+              <th> No of guest</th>
+              <th> Price</th>
+              <th> Availability</th>
+              <th> Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor = "let room of rooms" >
+              <td> {{ room.roomNumber }} </td>
+              <td> {{ room.category }} </td>
+              <td> {{ room.roomType }} </td>
+              <td> {{ room.arrivalDate }} </td>
+              <td> {{ room.departDate }} </td>
+              <td> {{ room.noOfGuests }} </td>
+              <td> {{ room.price }} </td>
+              <td *ngIf="room.availability === 1 "> YES </td>
+              <td *ngIf="room.availability === 0 "> NO - (BOOKED) </td>
+              <!-- <td> {{ room.availability }} </td> -->
+              <td>
+                  <button  (click)="updateroom(room.roomNumber)" class = "btn btn-info"> Update</button>
+                  <button  (click)="deleteroom(room.roomNumber)"class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                  <!-- <button  class = "btn btn-info" style="margin-left: 10px"> View</button> -->
+              </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  </mat-tab>
+
+  <mat-tab label="Add Room">
+
+    <br>
+    <div class="col-md-5 offset-md-3">
+      <h3>CREATE-ROOM</h3>
+      <form #roomform ="ngForm" (ngSubmit) = "onSubmit(roomform)">
+            <div class="form-group">
+              <label>Room Number</label>
+              <input type ="number" class ="form-control" id="RoomNumber" name ="RoomNumber" [(ngModel)] = "newroom.roomNumber">
+            </div>
+
+            <!-- <div class="form-group">
+              <label>Category</label>
+              <input type ="text" class ="form-control" id="Category" name ="Category" [(ngModel)] = "newroom.category">
+            </div> -->
+
+            <div class="form-group">
+              <label>Category</label>
+              <div class="form-control">
+                <label class="radio-inline">
+                  <input type="radio" name="Category" value="AC" [(ngModel)] = "newroom.category">AC</label>
+                  <br>
+                <label class="radio-inline">
+                  <input type="radio" name="Category" value="NON-AC" [(ngModel)] = "newroom.category">NON-AC</label>
+              </div>
+            </div>
+          
+            <!-- <div class="form-group">
+              <label>RoomType</label>
+              <input type ="text" class ="form-control" id="RoomType" name ="RoomType" [(ngModel)] = "newroom.roomType">
+            </div> -->
+
+            <div class="form-group">
+              <label for="RoomType">Room Type</label>
+              <select id="RoomType" name="RoomType" class="form-control" [(ngModel)] = "newroom.roomType">
+                <option value="Standard Queen">Standard Queen</option>
+                <option value="Standard King">Standard King</option>
+                <option value="Standard">Standard</option>
+                <option value="Deluxe">Deluxe</option>
+                <option value="Super Deluxe">Super Deluxe</option>
+                <option value="Classic">Classic</option>
+                <option value="Suites">Suites</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Arrival Date</label>
+              <input type ="date" class ="form-control" id="ArrivalDate" name ="ArrivalDate" [(ngModel)] = "newroom.arrivalDate">
+            </div>
+
+            <div class="form-group">
+              <label>Depart Date</label>
+              <input type ="date" class ="form-control" id="DepartDate" name ="DepartDate" [(ngModel)] = "newroom.departDate">
+            </div>
+
+            <div class="form-group">
+              <label>No of Guests</label>
+              <input type ="number" class ="form-control" id="Noofguests" name ="Noofguests" [(ngModel)] = "newroom.noOfGuests">
+            </div>
+
+            <div class="form-group">
+              <label>Price</label>
+              <input type ="number" class ="form-control" id="Price" name ="Price" [(ngModel)] = "newroom.price">
+            </div>
+
+            <!-- <div class="form-group">
+              <label>Availability</label>
+              <input type ="number" class ="form-control" id="Availability" name ="Availability" [(ngModel)] = "newroom.availability">
+            </div> -->
+
+            <div class="form-group">
+              <label for="Availability">Availability</label>
+              <select id="Availability" name="Availability" class="form-control" [(ngModel)] = "newroom.availability">
+                <option value=1>YES</option>
+                <option value=0>NO</option>
+              </select>
+            </div>
+        <br>
+             <button class ="btn btn-success"type="submit">Submit</button>
+      </form>
+      </div>
+  </mat-tab>
+
+
+
+  <mat-tab label="Customer Details">
+
+    <div class="CustomerList">
+      <br>
+      <table class = "table table-striped table-bordered table-hover">
+        <thead>
+            <tr class="bg-primary bg-opacity-25" >
+                <th> UserID</th>
+                <th> Name</th>
+                <th> Email </th>
+                <th> Username</th>
+                <th> DOB</th>
+                <th> Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let customer of customers" class="table-bordered" >
+                <td> {{ customer.id }} </td>
+                <td> {{ customer.name }} </td>
+                <td> {{ customer.emailId }} </td>
+                <td> {{ customer.userName }} </td>
+                <td> {{ customer.dob }} </td>
+                <td>
+                    <button class = "btn btn-danger" (click)="deletecustomer(customer.id)" style="margin-left: 10px"> Delete</button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </mat-tab>
+
+
+  <mat-tab label="Booking Details">
+
+    <div class="BookingList">
+      <br>
+      <table class = "table table-striped table-bordered table-hover">
+        <thead>
+            <tr class="bg-danger bg-opacity-25" >
+                <th> BookingID</th>
+                <th> Name</th>
+                <th> Email </th>
+                <th> Phone</th>
+                <th> Checkin</th>
+                <th> Checkout</th>
+                <th> Guests</th>
+                <th> Room Number</th>
+                <th> RoomType</th>
+                <th> Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let booking of bookings" class="table-bordered" >
+                <td> {{ booking.id }} </td>
+                <td> {{ booking.name }} </td>
+                <td> {{ booking.emailid }} </td>
+                <td> {{ booking.mobno }} </td>
+                <td> {{ booking.checkin }} </td>
+                <td> {{ booking.checkout }} </td>
+                <td> {{ booking.noOfGuests }} </td>
+                <td> {{ booking.roomNumber }} </td>
+                <td> {{ booking.roomtype }} </td>
+                <td>
+                    <button class = "btn btn-danger"  (click)="deleteBooking(booking.id)" style="margin-left: 10px"> Cancel Booking</button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+  </mat-tab>
+  
+  <mat-tab label="Customer Reviews">
+    <br>
+          <div class="slider main-font-family">
+            <h2 class="text-center text-capitalize main-font-family">what our clients say</h2>
+          <div id="slideToNext" class="carousel slide" data-ride="carousel">
+
+
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="carousel-caption d-block">
+                    <img src="assets/images/pic7.jpg">
+                  <h5>Amit</h5>
+                  <p>II stayed as a single person for an overnight visit. It was the perfect size and space for what I needed.
+                    Very clean and comfortable. I originally booked a single, but was upgraded to a double. 
+                    I think it would have definitely on the small side if I were sharing that space it another person, though. 
+                    The hotel staff was very kind and accommodating.</p>
+                </div>
+              </div>
+
+              <div class="carousel-item ">
+                <div class="carousel-caption d-block">
+                    <img src="/assets/images/pic10.jpg">
+                  <h5>Sara</h5>
+                  <p>A really nice hotel, staff only willing to help.the rooms are clean and tidy it’s a
+                    stones throw from the main train station which is a bonus I’d recommend this. Hotel and we will becoming Bach to stay again</p>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="carousel-caption d-block">
+                    <img src="/assets/images/pic11.webp">
+                  <h5>Raj</h5>
+                  <p>Had a brilliant stay. Cannot fault hotel. It was clean, in a good location, served a great breakfast and the staff were extremely helpful. 
+                    Would definitely recommend and would certainly stay here again</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+  </mat-tab>
+</mat-tab-group>
+

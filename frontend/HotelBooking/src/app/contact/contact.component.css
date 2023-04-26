@@ -1,0 +1,170 @@
+/* contact */
+
+.contact {
+  padding: 30px 0 70px;
+  position: relative;
+  margin-top: 80px;
+}
+
+.contact .container > h2 {
+  font-size: 45px;
+  margin-bottom: 90px;
+}
+
+.contact .col-6 h2 {
+  font-size: 55px;
+  width: 70%;
+  float: right
+}
+
+.contact .contact-form {
+  background-color: rgba(212,5,1,.8);
+  padding: 52px;
+  border: 1px solid #000;
+  position: relative;
+  left: 111px;
+}
+
+.contact form input, .contact form textarea {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+}
+
+.contact form textarea {
+  resize: none;
+  height: 100px;
+}
+
+.contact form input[type="submit"] {
+  width: 120px;
+  height: 40px;
+  background-color: #ffcc33;
+  border: none;
+  margin-bottom: 0;
+}
+
+.contact > div:last-of-type {
+  z-index: -1;
+  position: absolute;
+  height: 570px;
+  width: 680px;
+  left: 0;
+  bottom: 0px;
+  background-image: url("/assest/images/pic1.jpg");
+  background-size: cover;
+}
+
+.contact .row > .col-6:last-of-type {
+  position: relative
+}
+
+.contact h2 + img {
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  right: -120px;
+  z-index: -3;
+}
+
+/* footer */
+
+footer {
+  background-image: url("/assets/images/pic8.jpg");
+  background-size: cover;
+  color: rgb(253, 253, 253)
+}
+
+footer a {
+  color: white
+}
+
+footer a:hover {
+  color: #ffcc33;
+}
+
+footer h3 {
+  margin-bottom: 20px
+}
+
+footer ul {
+  padding-left: 0;
+}
+
+footer ul li {
+  margin-bottom: 10px;
+}
+
+footer p {
+  line-height: 1.9;
+} 
+
+footer .overlay {
+  padding: 50px;
+}
+
+footer .form ul {
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+footer .form ul li {
+  float: left;
+  padding: 0 15px;
+}
+
+footer .form ul li a {
+  color: #ffcc33;
+  padding: 0 13px;
+  border: 1px solid #ffcc33;
+  border-radius: 50%;
+  display: block;
+  text-align: center;
+  width: 55px;
+  height: 55px;
+  line-height: 53px;
+}
+
+footer .form ul li a i {
+  width: 15px;
+  text-align: center;
+}
+
+footer form input:first-of-type {
+  padding-left: 10px;
+  width: 70%;
+  border: none;
+  padding: 4px 10px;
+}
+
+footer form input:last-of-type {
+  width: 28%;
+  position: relative;
+  right: 4px;
+  border: none;
+  padding: 7px 7px 6px;
+  background-color: #cc0000;
+  color: rgb(91, 10, 10);
+  cursor: pointer;
+  font-size: 13px;
+  top: -2px;
+  height: 37px;
+}
+
+.copyright {
+  text-align: center;
+  padding: 15px 0;
+}
+
+.copyright p {
+  margin: 0
+}
+
+.copyright p a {
+  color: #222;
+}
+
+.copyright p a:hover,
+.copyright p a:focus {
+ color: #cc0000;
+}

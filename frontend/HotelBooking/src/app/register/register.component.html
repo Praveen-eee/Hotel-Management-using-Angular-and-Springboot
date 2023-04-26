@@ -1,0 +1,65 @@
+<div class="half">
+  <div class="bg order-1 order-md-2" style="background-image: url('assets/images/bg2.jpg');"></div>
+  <div class="contents order-2 order-md-1">
+
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-6">
+          <div class="form-block">
+            <div class="text-center mb-5">
+            <h3>Register Form</h3>
+            
+            </div>
+            <form #customerform ="ngForm" (ngSubmit) = "onSubmit()" method="post">
+
+              <div class="form-group first">
+                <label for="name">Name</label>
+                <input required minlength="5" pattern="[a-z A-Z]+" type="text" class="form-control" placeholder="John Doe" id="name" name ="name" [(ngModel)] = "newcustomer.name">
+              </div>
+
+              <div class="form-group first">
+                <label for="email">Email Address</label>
+                <input  #email ="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" requiredtype="text" class="form-control" placeholder="Ex: email@gmail.com" id="email" name ="email" [(ngModel)] = "newcustomer.emailId">
+                <span class="text-danger" *ngIf="email.invalid && email.touched">Please enter valid Email</span>
+              </div>
+              
+              <div class="form-group first">
+                <label for="dob">DOB</label>
+                <input type="date" class="form-control" id="dob" name ="dob" [(ngModel)] = "newcustomer.dob">
+              </div>
+
+              <div class="form-group first">
+                <label for="userName">UserName</label>
+                <input required minlength="5" pattern="[a-z A-Z 0-9]+" type="text" class="form-control" placeholder="Ex:John9799" id="userName" name ="userName" [(ngModel)] = "newcustomer.userName" #userName = "ngModel">
+                <span class="text-danger" *ngIf="userName.invalid && customerform.touched">Please enter valid name</span>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input #password="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required type="password" class="form-control" placeholder="Your Password" id="password" name ="password" [(ngModel)] = "newcustomer.password" >
+                <span class="text-danger" *ngIf="password.invalid && password.touched">Please enter valid password</span>
+              </div>
+              <div class="form-group last mb-3">
+                <label for="re-password">Re-type Password</label>
+                <input #repassword="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required type="password" class="form-control" placeholder="Re-type Your Password" id="re-password" name ="re-password" [(ngModel)] = "reppassword" >
+                <span class="text-danger" *ngIf="repassword.invalid && repassword.touched">Password Mismatch</span>
+              </div>
+              
+              <div class="form-check d-flex justify-content-center mb-3">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                <label class="form-check-label" for="form2Example3">
+                  I agree all statements in <a>Terms of service</a>
+                </label>
+              </div>
+
+              <p>Already have an account? <a routerLink="/login" class="link-info">Login here</a></p>
+
+              <input type="submit" value="Register" class="btn btn-block btn-primary">
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
